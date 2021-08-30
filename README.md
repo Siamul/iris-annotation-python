@@ -1,1 +1,1 @@
-# iris-annotation-python
+# Iris Annotation Tool
