@@ -58,7 +58,7 @@ def leastsq_circle(x, y):
 
 def create_image_with_points():
     global images, image_index, points, p_x, p_y, p_r, i_x, i_y, i_r
-    img = Image.open(images[image_index]).convert('RGB').resize((320, 240), Image.BILINEAR)
+    img = Image.open(images[image_index]).convert('RGB')
     draw = ImageDraw.Draw(img)
 
     for point in points['pupil']:
@@ -106,6 +106,7 @@ def select_image_folder():
         data = json.load(open(data_file))
         points = data['points']
     current_img = create_image_with_points()
+    canvas.config(width = current_img.width(), height = current_img.height())
     canvas.create_image(0, 0, anchor=NW, image=current_img)
     previous_image_button['state']='normal'
     next_image_button['state']='normal'
@@ -135,6 +136,7 @@ def previous_image():
             points = data['points']
         
         current_img = create_image_with_points()
+        canvas.config(width = current_img.width(), height = current_img.height())
         canvas.create_image(0, 0, anchor=NW, image=current_img)
 
 def next_image():
@@ -155,6 +157,7 @@ def next_image():
             data = json.load(open(data_file))
             points = data['points']
         current_img = create_image_with_points()
+        canvas.config(width = current_img.width(), height = current_img.height())
         canvas.create_image(0, 0, anchor=NW, image=current_img)
 
 def select_pupil_list():
@@ -275,7 +278,7 @@ pupil_button.grid(row=0, column=3)
 iris_button.grid(row=0, column=4)
 delete_button.grid(row=0, column=5)
 clear_button.grid(row=0, column=6)
-canvas = Canvas(root, width=640, height=480)
+canvas = Canvas(root)
 canvas.bind("<Button-1>", callback)
 canvas.grid(row=2, columnspan=7)
 
