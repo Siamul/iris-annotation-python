@@ -58,7 +58,7 @@ def leastsq_circle(x, y):
 
 def create_image_with_points():
     global images, image_index, points, p_x, p_y, p_r, i_x, i_y, i_r
-    img = Image.open(images[image_index]).convert('RGB').resize((640, 480), Image.BILINEAR)
+    img = Image.open(images[image_index]).convert('RGB').resize((320, 240), Image.BILINEAR)
     draw = ImageDraw.Draw(img)
 
     for point in points['pupil']:
