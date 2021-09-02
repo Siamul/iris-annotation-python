@@ -21,7 +21,7 @@ current_img = None
 image_index = 0
 folder_path = ''
 
-points = {}  #index 0 is pupil and 1 is iris
+points = {}  
 points['pupil'] = []
 points['iris'] = []
 points_index = 'pupil'
